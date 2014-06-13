@@ -1,13 +1,13 @@
-package com.sandersdenardi.infinitescrolllistview.app;
+package com.sandersdenardi.infinitescrolllistview.app.lib;
 
 import android.widget.AbsListView;
 
-public class InfiniteOnScrollListener implements AbsListView.OnScrollListener {
+public class InfiniteScrollOnScrollListener implements AbsListView.OnScrollListener {
 
     private static final int SCROLL_OFFSET = 2;
     private IInfiniteScrollListener listener;
 
-    public InfiniteOnScrollListener(IInfiniteScrollListener listener) {
+    public InfiniteScrollOnScrollListener(IInfiniteScrollListener listener) {
         this.listener = listener;
     }
 
