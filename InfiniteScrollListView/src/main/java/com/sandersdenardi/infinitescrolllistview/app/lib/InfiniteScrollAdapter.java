@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import java.util.ArrayList;
+import java.util.Collection;
 
 public abstract class InfiniteScrollAdapter extends BaseAdapter {
 
@@ -49,8 +49,8 @@ public abstract class InfiniteScrollAdapter extends BaseAdapter {
         doneLoading = true;
     }
 
-    public abstract ArrayList getItems();
-    public abstract void addItems(ArrayList items);
+    public abstract Collection getItems();
+    public abstract void addItems(Collection items);
     public abstract Object getRealItem(int position);
     public abstract View getRealView(LayoutInflater inflater, int position, View convertView, ViewGroup parent);
     public abstract View getLoadingView(LayoutInflater inflater, ViewGroup parent);

@@ -9,7 +9,6 @@ import android.widget.Toast;
 import com.sandersdenardi.infinitescrolllistview.app.lib.IInfiniteScrollListener;
 import com.sandersdenardi.infinitescrolllistview.app.lib.InfiniteScrollListView;
 import com.sandersdenardi.infinitescrolllistview.app.lib.InfiniteScrollOnScrollListener;
-import com.sandersdenardi.infinitescrolllistview.app.lib.MyAdapterObj;
 
 import java.util.ArrayList;
 
@@ -76,6 +75,12 @@ public class MainActivity extends ActionBarActivity implements IInfiniteScrollLi
         protected void onPostExecute(ArrayList<MyAdapterObj> result) {
             listView.appendItems(result);
             executing = false;
+            if (result.size() > 0) {
+                Toast.makeText(getApplicationContext(), "Loaded " + String.valueOf(result.size()) + " items", Toast.LENGTH_SHORT).show();
+            } else {
+
+                Toast.makeText(getApplicationContext(), "No more items to load", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

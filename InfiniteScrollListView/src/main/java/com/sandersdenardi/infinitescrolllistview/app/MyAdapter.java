@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.sandersdenardi.infinitescrolllistview.app.lib.InfiniteScrollAdapter;
-import com.sandersdenardi.infinitescrolllistview.app.lib.MyAdapterObj;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class MyAdapter extends InfiniteScrollAdapter {
 
@@ -26,7 +26,7 @@ public class MyAdapter extends InfiniteScrollAdapter {
     }
 
     @Override
-    public void addItems(ArrayList items) {
+    public void addItems(Collection items) {
         if (items.size() > 0) {
             this.items.addAll(items);
         } else {

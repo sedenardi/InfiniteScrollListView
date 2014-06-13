@@ -1,4 +1,4 @@
-package com.sandersdenardi.infinitescrolllistview.app.lib;
+package com.sandersdenardi.infinitescrolllistview.app;
 
 public class MyAdapterObj {
     public String main;
