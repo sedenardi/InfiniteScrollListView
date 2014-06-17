@@ -33,7 +33,7 @@ public class MainActivity extends ActionBarActivity implements IInfiniteScrollLi
 
         //Populate initial list
         ArrayList<MyAdapterObj> items = new ArrayList<MyAdapterObj>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 8; i++) {
             String main = "Main index: " + String.valueOf(i);
             String sub = "Sub index: " + String.valueOf(i);
             items.add(new MyAdapterObj(main,sub));
@@ -61,8 +61,8 @@ public class MainActivity extends ActionBarActivity implements IInfiniteScrollLi
                 e.printStackTrace();
             }
             ArrayList<MyAdapterObj> items = new ArrayList<MyAdapterObj>();
-            if (params[0] < 60) {
-                for (int i = params[0]; i < (params[0] + 20); i++) {
+            if (params[0] < 40) {
+                for (int i = params[0]; i < (params[0] + 8); i++) {
                     String main = "Main index: " + String.valueOf(i);
                     String sub = "Sub index: " + String.valueOf(i);
                     items.add(new MyAdapterObj(main,sub));
