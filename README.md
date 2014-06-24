@@ -15,11 +15,11 @@ public abstract class InfiniteScrollAdapter extends BaseAdapter {
     View getLoadingView(LayoutInflater inflater, ViewGroup parent);
 }
 ```
-`getItems()` must expose the underlying data as a collection. 
-`addItems()` takes in a collection and, depending on whether the collection is empty, either adds the items to the underlying data or sets the internal `doneLoading` flag to `true`. The implementation must also call `notifyDataSetChanged()` at the end of the method.
-`getRealItem()` returns the object represented by that position. You can assume the position is within the bounds of whatever collection you expose via `getItems()`.
-`getRealView()` works just like `getView()` in a regular `ListAdapter`, returning a view for the particular position.
-`getLoadingView()` also works like a regular `ListAdapter`, but returns a view that indicates that data is being loaded in the background.
+- `getItems()` must expose the underlying data as a collection.
+- `addItems()` takes in a collection and, depending on whether the collection is empty, either adds the items to the underlying data or sets the internal `doneLoading` flag to `true`. The implementation must also call `notifyDataSetChanged()` at the end of the method.
+- `getRealItem()` returns the object represented by that position. You can assume the position is within the bounds of whatever collection you expose via `getItems()`.
+- `getRealView()` works just like `getView()` in a regular `ListAdapter`, returning a view for the particular position.
+- `getLoadingView()` also works like a regular `ListAdapter`, but returns a view that indicates that data is being loaded in the background.
 
 ### InfiniteScrollOnScrollListener
 The implementation of OnScrollListener that detects whether the ListView is close to its end.
