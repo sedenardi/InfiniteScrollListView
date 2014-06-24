@@ -13,11 +13,11 @@ import java.util.Collection;
 
 public class MyAdapter extends InfiniteScrollAdapter {
 
-    private ArrayList<MyAdapterObj> items;
+    private ArrayList<String> items;
 
     public MyAdapter(Context context) {
         super(context);
-        items = new ArrayList<MyAdapterObj>();
+        items = new ArrayList<String>();
     }
 
     @Override
@@ -43,8 +43,7 @@ public class MyAdapter extends InfiniteScrollAdapter {
     @Override
     public View getRealView(LayoutInflater inflater, int position, View convertView, ViewGroup parent) {
         View v = inflater.inflate(R.layout.list_item, null);
-        ((TextView)v.findViewById(R.id.text_main)).setText(items.get(position).main);
-        ((TextView)v.findViewById(R.id.text_sub)).setText(items.get(position).sub);
+        ((TextView)v.findViewById(R.id.text_main)).setText(items.get(position));
         return v;
     }
 

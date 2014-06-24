@@ -36,6 +36,8 @@ Example
 -------
 The included example is a simple implementation. The application is a single activity that creates an `InfiniteScrollListView` and an implementation of the `InfiniteScrollAdapter` using an `ArrayList` of trivial objects. It populates the list with an amount of items that does not extend beyond the view port, causing the immediate retrieval of data. Data fetching is simulated via an `AsyncTask` with a `sleep()` delay. It will load a maximum of 40 items, then return an empty collection to signify that no more data is available.
 
+NOTE: The example also includes additions to the library to demonstrate which items in the list are considered visible by the `OnScrollListener`. The additional code is commented as such. This allows you to get a good understanding of how `onScroll()` works.
+
 License
 -------
 The MIT License (MIT)

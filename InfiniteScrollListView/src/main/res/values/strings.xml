@@ -4,5 +4,6 @@
     <string name="app_name">InfiniteScrollListView</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="visible">Visible</string>
+    <string name="not_visible">Not Visible</string>
 </resources>

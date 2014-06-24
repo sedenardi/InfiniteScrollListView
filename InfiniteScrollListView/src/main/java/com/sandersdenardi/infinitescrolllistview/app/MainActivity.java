@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sandersdenardi.infinitescrolllistview.app.lib.IInfiniteScrollListener;
@@ -17,6 +18,10 @@ public class MainActivity extends ActionBarActivity implements IInfiniteScrollLi
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     protected InfiniteScrollListView listView;
+    protected TextView firstVisibleItemText;
+    protected TextView visibleItemCountText;
+    protected TextView totalItemCountText;
+    private MyAdapter adapter;
     private InfiniteScrollOnScrollListener scrollListener;
     private ListTask listTask;
     private boolean executing = false;
@@ -26,17 +31,22 @@ public class MainActivity extends ActionBarActivity implements IInfiniteScrollLi
         super.onCreate(savedInstanceState);
         Log.d(LOG_TAG, "Starting App");
         setContentView(R.layout.activity_main);
+
+        firstVisibleItemText = (TextView) findViewById(R.id.firstVisibleItem);
+        visibleItemCountText = (TextView) findViewById(R.id.visibleItemCount);
+        totalItemCountText = (TextView) findViewById(R.id.totalItemCount);
+
         listView = (InfiniteScrollListView) findViewById(R.id.list_view);
         scrollListener = new InfiniteScrollOnScrollListener(this);
         listView.setListener(scrollListener);
-        listView.setAdapter(new MyAdapter(this));
+        adapter = new MyAdapter(this);
+        listView.setAdapter(adapter);
 
         //Populate initial list
-        ArrayList<MyAdapterObj> items = new ArrayList<MyAdapterObj>();
+        ArrayList<String> items = new ArrayList<String>();
         for (int i = 0; i < 8; i++) {
-            String main = "Main index: " + String.valueOf(i);
-            String sub = "Sub index: " + String.valueOf(i);
-            items.add(new MyAdapterObj(main,sub));
+            String str = "Index: " + String.valueOf(i);
+            items.add(str);
         }
         listView.appendItems(items);
     }
@@ -51,28 +61,35 @@ public class MainActivity extends ActionBarActivity implements IInfiniteScrollLi
         }
     }
 
-    private class ListTask extends AsyncTask<Integer, Void, ArrayList<MyAdapterObj>> {
+    // Item visibility code
+    @Override
+    public void onScrollCalled(int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+        firstVisibleItemText.setText(String.valueOf(firstVisibleItem));
+        visibleItemCountText.setText(String.valueOf(visibleItemCount));
+        totalItemCountText.setText(String.valueOf(totalItemCount));
+    }
+
+    private class ListTask extends AsyncTask<Integer, Void, ArrayList<String>> {
 
         @Override
-        protected ArrayList<MyAdapterObj> doInBackground(Integer... params) {
+        protected ArrayList<String> doInBackground(Integer... params) {
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            ArrayList<MyAdapterObj> items = new ArrayList<MyAdapterObj>();
+            ArrayList<String> items = new ArrayList<String>();
             if (params[0] < 40) {
                 for (int i = params[0]; i < (params[0] + 8); i++) {
-                    String main = "Main index: " + String.valueOf(i);
-                    String sub = "Sub index: " + String.valueOf(i);
-                    items.add(new MyAdapterObj(main,sub));
+                    String str = "Index: " + String.valueOf(i);
+                    items.add(str);
                 }
             }
             return items;
         }
 
         @Override
-        protected void onPostExecute(ArrayList<MyAdapterObj> result) {
+        protected void onPostExecute(ArrayList<String> result) {
             listView.appendItems(result);
             executing = false;
             if (result.size() > 0) {

@@ -21,6 +21,9 @@ public class InfiniteScrollOnScrollListener implements AbsListView.OnScrollListe
                 visibleItemCount < totalItemCount) {
             listener.endIsNear();
         }
+
+        // Item visibility code
+        listener.onScrollCalled(firstVisibleItem, visibleItemCount, totalItemCount);
     }
 
     public void checkForFetchMore(final AbsListView listView) {
